@@ -112,7 +112,8 @@ The project is removed from the list immediately.
 
 ## Managing Project Members
 
-From the **project detail page**, you can add, import, change roles for, and remove members.
+From the **project detail page**, members can be added, imported, filtered, analyzed, assigned
+new roles, and removed.
 
 ### Add a User
 
@@ -189,6 +190,72 @@ lose access to this project.
 If this project was the user's default project, it stops being charged for the user's usage and
 a new default is determined automatically. See
 [Default Project](./users.md#default-project).
+
+### Filter Project Members
+
+The **Members** tab provides filters above the table. Filters can be combined, and **Clear All**
+resets them.
+
+| Filter           | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| **Search**       | Finds members by name or email                                         |
+| **Project Role** | Limits the list to **User** or **Project Admin** members               |
+| **Budget usage** | Limits the list by budget consumption level                            |
+| **Account type** | Limits the list to **Regular User** and/or **Service Account** members |
+
+The **Account type** filter is a multi-select. With nothing selected, or with both options
+selected, all members are listed. Selecting only **Service Account** lists service accounts
+only, and selecting only **Regular User** hides them. Pagination, totals, and select-all
+reflect the filtered list.
+
+![Members tab — Account type filter with Regular User and Service Account options](./images/members-account-type-filter.png)
+
+### Service Accounts
+
+A service account is a non-interactive account, typically created for an automated client such
+as a CI pipeline or an integration. A service account that is linked to a project is a regular
+project member with a **SERVICE ACCOUNT** badge shown next to its name in the Members table.
+
+- Service accounts draw on the project budget. The **Budget Allocations** column shows the
+  budget and spend per category, and a service account without any usage shows `$0.00`.
+- The role of a service account can be changed, and it can be unassigned from the project, in
+  the same way as for any other member.
+- Linking a service account to a project is performed by Platform Administrators or Support.
+  An account that is not yet linked does not appear in the list.
+
+### View Member Analytics
+
+Usage analytics for project members open on the **Analytics** page, scoped to the project and
+the selected members.
+
+:::note Enterprise package
+Viewing analytics requires the Enterprise package and project management rights.
+:::
+
+- **Single member** — click **⋮ (Actions)** on the member row and select **View analytics**.
+- **Several members** — select the members using the row checkboxes (or the header checkbox),
+  open **Bulk Actions**, and select **View analytics**. Service accounts and regular users can
+  be mixed to compare them on one Analytics page.
+
+![Bulk Actions menu with View analytics](./images/members-bulk-view-analytics.png)
+
+The Analytics page opens in the same browser tab, and the member selection is preserved when
+returning to the Members tab. The action stays disabled until the project budgets are loaded,
+because the budget period defines the analytics time range.
+
+:::info Selection limit
+**View analytics** is available for at most 100 selected members. Above that number, the action
+is disabled and an information icon explains the limit. Narrow the selection, for example by
+using the **Account type** filter, to proceed.
+:::
+
+![View analytics disabled above 100 selected members](./images/members-bulk-analytics-limit.png)
+
+### Who Can See Project Members
+
+The member list of a project is available only to members of that project, Platform Admins,
+Maintainers, and Auditors. Requesting the members of a project without belonging to it is
+rejected with an access error (`403`). The **Add User to Project** search is not affected.
 
 ## Model Configuration
 

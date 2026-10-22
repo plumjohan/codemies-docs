@@ -233,6 +233,10 @@ An extensible component that adds functionality to the CodeMie platform. Plugins
 
 ## S
 
+### Service Account
+
+A non-interactive account used by automated clients such as CI pipelines or integrations. A service account is an ordinary project member with a **SERVICE ACCOUNT** badge in the project Members table, and it draws on the project budget. See [Service Accounts](../project-user-management/projects.md#service-accounts).
+
 ### Slug
 
 A human-readable unique identifier assigned to an assistant. Unlike the internal UUID, a slug is a short, URL-safe string (e.g., `ai-run-chatbot`, `my-custom-assistant`) that is stable and used to reference assistants in URLs, API calls, and configuration files. Slugs are auto-generated from the assistant name when the assistant is created but can be customized on the assistant's configuration page.
